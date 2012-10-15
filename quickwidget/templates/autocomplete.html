@@ -1,0 +1,19 @@
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('#{{attrs.id}}').autocomplete({
+            source: "{{ attrs.url }}",
+            minLength: 2,
+            select: function(event, ui) {
+                $("#email").val(ui.item.value);
+                return false;
+            }
+        }).data( "autocomplete" )._renderItem = function( ul, item ) {
+            return $( "<li></li>" )
+            .data( "item.autocomplete", item )
+            .append( "<a>" + item.info_html + "</a>" )
+            .appendTo( ul );
+            };
+    });
+</script>
